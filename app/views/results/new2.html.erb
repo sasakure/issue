@@ -1,0 +1,21 @@
+<h1>New result</h1>
+
+<% form_for(@result2) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :issue_id %><br />
+    <%= f.text_field :issue_id %>
+  </p>
+  <p>
+    <%= f.label :reserach %><br />
+    <%= f.text_field :reserach %>
+  </p>
+  <p>
+    <%= f.label :responder %><br />
+    <%= f.text_field :responder %>
+  </p>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>

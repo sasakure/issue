@@ -1,0 +1,46 @@
+<%= stylesheet_link_tag 'calendar/simple' %>
+<%= javascript_include_tag 'prototype.js' %>
+<%= javascript_include_tag 'calendar/protocalendar' %>
+<%= javascript_include_tag 'calendar/lang_ja' %>
+
+h1>新規問合せ登録</h1>
+
+<h2>問合せ内容を入力してください。</h2>
+
+<% form_tag ({:action => 'create'}, {:class => 'top'} ) do %>
+<!--
+<table id="box-table-a">
+  <thead>
+  <tr>
+    <th class="id">タイトル</th>
+    <th class="id">内容</th>
+    <th class="id">問合せ者氏名</th>
+    <th class="id">メールアドレス</th>
+  </tr>
+  </thead>
+<tbody>
+  <tr>
+    <td><%= text_field 'inp', 'title' %></td>
+    <td><%= text_field 'inp', 'content' %></td>
+    <td><%= text_field 'inp', 'querist' %></td>
+    <td><%= text_field 'inp', 'mail_addr' %></td>
+  </tr>
+</tbody>
+</table>
+-->
+
+<h3>タイトル</h3><%= text_field 'inp', 'title' %><br>
+<h3>内容</h3><%= text_field 'inp', 'content' %><br>
+<h3>問合せ者氏名</h3><%= text_field 'inp', 'querist' %><br>
+<h3>メールアドレス</h3><%= text_field 'inp', 'mail_addr' %><br>
+<h3>回答期限</h3><%= date_select 'inp', 'due' %><br>
+<h3>ステータス</h3>
+<%= select( "inp", "status", Position.all.collect{|i| [i.name, i.value] } ) %>
+<h3>公開可否</h3>
+<%= select( "inp", "ope_public", Item.all.collect{|i| [i.name, i.value] } ) %>
+<br><br>
+<%= submit_tag "登録" %>
+<% end %>
+<hr>
+<%= link_to '戻る', { :controller => 'top', :action => 'index'} %>
+

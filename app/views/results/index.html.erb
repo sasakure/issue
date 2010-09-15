@@ -1,0 +1,24 @@
+<h1>Listing results</h1>
+
+<table>
+  <tr>
+    <th>Issue</th>
+    <th>Reserach</th>
+    <th>Responder</th>
+  </tr>
+
+<% @results.each do |result| %>
+  <tr>
+    <td><%=h result.issue_id %></td>
+    <td><%=h result.reserach %></td>
+    <td><%=h result.responder %></td>
+    <td><%= link_to 'Show', result %></td>
+    <td><%= link_to 'Edit', edit_result_path(result) %></td>
+    <td><%= link_to 'Destroy', result, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New result', new_result_path %>

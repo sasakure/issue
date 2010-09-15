@@ -1,0 +1,8 @@
+digraph models_diagram {
+	graph[overlap=false, splines=true]
+	"Issue" [shape=Mrecord, label="{Issue|title :string\lcontent :text\lquerist :string\lmail_addr :string\ldue :date\lope_public :integer\lstatus :integer\lcreated_at :datetime\lupdated_at :datetime\l}"]
+	"Item" [shape=Mrecord, label="{Item|name :string\lvalue :integer\lcreated_at :datetime\lupdated_at :datetime\l}"]
+	"Position" [shape=Mrecord, label="{Position|name :string\lvalue :integer\lcreated_at :datetime\lupdated_at :datetime\l}"]
+	"Result" [shape=Mrecord, label="{Result|reserach :text\lresponder :string\lcreated_at :datetime\lupdated_at :datetime\l}"]
+	"Issue" -> "Result" [arrowtail=crow, arrowhead=dot, dir=both]
+}

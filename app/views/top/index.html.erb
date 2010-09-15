@@ -1,0 +1,49 @@
+<h1>問合せ管理Tool</h1>
+<hr>
+<h2>問合せサマリ</h2>
+<h3>問合せ件数<%= @issue_cnt %></h3>
+<!--
+<h3>回答件数<%= @issue_cnt %></h3>
+<h3>未回答件数<%= @issue_cnt %></h3>
+<h3>回答率<%= @issue_cnt %></h3>
+-->
+<hr>
+<h2>問合せ一覧</h2>
+<table id="box-table-a">
+  <thead>
+  <tr>
+    <th class="id">ID </th>
+    <th class="title">問合せタイトル</th>
+    <th class="content">内容</th>
+    <th class="querist">問合せ者</th>
+    <th class="title">問合せ者メアド</th>
+    <th class="public">公開可否</th>
+    <th class="public">ステータス</th>
+  </tr>
+  </thead>
+<tbody>
+<% @issue.each do |issue| %>
+  <tr>
+    <td class="id"><%=h issue.id %></td>
+    <td class="title"><%=h issue.title %></td>
+    <td class="content"><%=h issue.content %></td>
+    <td class="querist"><%=h issue.querist %></td>
+    <td class="title"><%=h issue.mail_addr %></td>
+    <td><%=h Item.find(:all, :select => "name", :conditions => ["value = ?", issue.ope_public]) %></td>
+
+<!--
+
+    <td><%=h (Item.find(:all, :select => "name", :conditions => ["value = ?", issue.ope_public] )) %></td>
+
+    <td class="public"><%=h issue.status %></td>
+-->
+    <td class="public"><%=h issue.status %></td>
+    <td class="status"><%= link_to '消す',  :confirm => 'Are you sure?', :action=>"destroy", :id=>issue.id %></td>
+    <td class="status"><%= link_to 'Ans登録',  :action=>"edit", :id=>issue.id %></td>
+  </tr>
+<% end %>
+</tbody>
+</table>
+<hr>
+<%= link_to '新規問合せ登録！', { :controller => 'top', :action => 'new'} %>
+

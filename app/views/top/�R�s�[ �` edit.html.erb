@@ -1,0 +1,64 @@
+<h1>問合せ回答入力フォーム</h1>
+<hr>
+<h2>対象の問合せ</h2>
+<table id="box-table-a">
+  <thead>
+  <tr>
+    <th>ID </th>
+    <th class="title">問合せタイトル</th>
+    <th class="content">内容</th>
+    <th class="querist">問合せ者</th>
+    <th>問合せ者メアド</th>
+    <th>公開可否</th>
+    <th>ステータス</th>
+  </tr>
+  </thead>
+<tbody>
+  <tr>
+    <td><%= @issue_edit.id %></td>
+    <td class="title"><%=h @issue_edit.title %></td>
+    <td class="content"><%=h @issue_edit.content %></td>
+    <td class="querist"><%=h @issue_edit.querist %></td>
+    <td><%=h @issue_edit.mail_addr %></td>
+    <td><%=h @issue_edit.ope_public %></td>
+    <td><%=h @issue_edit.status %></td>
+  </tr>
+</tbody>
+</table>
+<hr>
+
+<% if @issue_edit.results %>
+<h2>既に回答済みの内容</h2>
+<table id="box-table-a">
+  <thead><tr>
+    <th>回答者</th>
+    <th>Ans.</th>
+  </tr></thead>
+<tbody>
+ <% @issue_edit.results.each do |f| %>
+  <tr>
+    <td><%= f.responder %></td>
+    <td><%= f.reserach  %></td>
+  </tr>
+<% end %>
+</tbody>
+
+</table>
+<% end %>
+
+
+
+<hr>
+<h2>回答を入力してください</h2>
+<% form_for :result, @result, :url=>{:action=>"create2"} do |f| %>
+<h3>Issue_ID</h3>
+<%= f.text_field :issue_id %>
+<h3><%= f.label "調査結果" %></h3>
+<%= f.text_area :reserach , :size=>"80*3" %>
+<h3><%= f.label "回答者" %><br></h3>
+<%= f.text_field :responder %><br><br>
+<%= submit_tag '登録する' %>
+<% end %>
+<hr>
+<%= link_to '戻る', { :controller => 'top', :action => 'index'} %>
+

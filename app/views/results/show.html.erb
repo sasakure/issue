@@ -1,0 +1,18 @@
+<p>
+  <b>Issue:</b>
+  <%=h @result.issue_id %>
+</p>
+
+<p>
+  <b>Reserach:</b>
+  <%=h @result.reserach %>
+</p>
+
+<p>
+  <b>Responder:</b>
+  <%=h @result.responder %>
+</p>
+
+
+<%= link_to 'Edit', edit_result_path(@result) %> |
+<%= link_to 'Back', results_path %>

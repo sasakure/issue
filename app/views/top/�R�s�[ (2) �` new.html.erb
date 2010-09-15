@@ -1,0 +1,20 @@
+<h1>新規問合せ登録</h1>
+
+<h2>問合せ内容を入力してください。</h2>
+
+<% form_tag ({:action => 'create'}, {:class => 'top'} ) do %>
+<h3>タイトル</h3><%= text_field 'inp', 'title' %><br>
+<h3>内容</h3><%= text_field 'inp', 'content' %><br>
+<h3>問合せ者氏名</h3><%= text_field 'inp', 'querist' %><br>
+<h3>メールアドレス</h3><%= text_field 'inp', 'mail_addr' %><br>
+<h3>回答期限</h3><%= text_field 'inp', 'due' %><br>
+<h3>ステータス</h3>
+<%= select( "inp", "status", Position.all.collect{|i| [i.name, i.value] } ) %>
+<h3>公開可否</h3>
+<%= select( "inp", "ope_public", Item.all.collect{|i| [i.name, i.value] } ) %>
+<br><br>
+<%= submit_tag "登録" %>
+<% end %>
+<hr>
+<%= link_to '戻る', { :controller => 'top', :action => 'index'} %>
+
